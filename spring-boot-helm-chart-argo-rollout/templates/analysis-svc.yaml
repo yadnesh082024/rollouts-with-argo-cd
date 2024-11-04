@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: tests
-  namespace: rollouts-argocd
+  namespace: {{ .Values.namespace }}
   labels:
     app.kubernetes.io/managed-by: Helm
   annotations:
-    meta.helm.sh/release-name: rollouts-argocd
-    meta.helm.sh/release-namespace: rollouts-argocd
+    meta.helm.sh/release-name: {{ .Values.releaseName }}
+    meta.helm.sh/release-namespace: {{ .Values.namespace }}
 spec:
   metrics:
     - name: test
@@ -31,7 +31,7 @@ spec:
                     args:
                       - |
                         set -e
-                        baseUrl="http://rollouts-spring-release-rollouts-canary.rollouts-spring.svc.cluster.local:80"
+                        baseUrl="http://{{ include "spring-app.fullname" . }}-canary.{{ .Values.namespace }}.svc.cluster.local:80"
 
                         echo "Installing jq..."
                         apk add --no-cache jq

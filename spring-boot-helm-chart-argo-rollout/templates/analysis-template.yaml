@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: response-time-analysis
-  namespace: rollouts-argocd
+  namespace: {{ .Values.namespace }}
   labels:
     app.kubernetes.io/managed-by: Helm
   annotations:
-    meta.helm.sh/release-name: rollouts-argocd
-    meta.helm.sh/release-namespace: rollouts-argocd
+    meta.helm.sh/release-name: {{ .Values.releaseName }}
+    meta.helm.sh/release-namespace: {{ .Values.namespace }}
 spec:
   metrics:
     - name: average-response-time
