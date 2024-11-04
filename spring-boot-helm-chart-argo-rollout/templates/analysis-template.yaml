@@ -17,4 +17,4 @@ spec:
       provider:
         prometheus:
           address: http://prometheus-server.prometheus.svc.cluster.local
-          query: avg(http_server_requests_seconds_sum{job="rollouts-spring-boot-canary"} / http_server_requests_seconds_count{job="rollouts-spring-boot-canary"})
+          query: avg(http_server_requests_seconds_sum{job="rollouts-with-argo-cd"} / http_server_requests_seconds_count{job="rollouts-with-argo-cd"})
