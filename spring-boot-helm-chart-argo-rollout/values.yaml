@@ -7,7 +7,7 @@ releaseName: rollouts-argocd
 image:
   repository: "yadnesh082024/github-actions-backend"
   pullPolicy: IfNotPresent
-  tag: main-20241107145251
+  tag: main-20241107145745
 
 service:
   type: ClusterIP
